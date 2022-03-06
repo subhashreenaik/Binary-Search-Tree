@@ -32,7 +32,25 @@ public class MainBinaryTree <K extends Comparable<K>> {
  	    }
  	    return root;
  	}
-     
+     /*This method is a recursive function to search a  key in binary search tree
+      * First it will check whether tree is empty or not.If it is empty,then it will return false value
+      * If key of the root value is the key then it will return truee.Otherwise it will recur down to tree.
+      * And each time it will go right or left tree and search the value.
+      */
+     public boolean searchLeaf(Node<K> root, K x)
+	 {
+	     
+	     if (root==null) {
+	    	 return false;
+	         }
+	     if	 (root.key==x) {
+	         return true;
+	         }
+	     int y = x.compareTo(root.key);
+	     if (y > 0)
+	        return searchLeaf(root.right, x);
+	        return searchLeaf(root.left, x);
+	 }
      
      /*This method print the binary tree in inorder manner */
      
@@ -57,6 +75,13 @@ public class MainBinaryTree <K extends Comparable<K>> {
  	{ 
  		this.inorderPrint(root); 
  	}
+ 	
+ 	/*print method is calling the searchLeaf method */ 
+ 	public boolean search(K key)
+ 	{
+		return this.searchLeaf(root, key);
+		
+	}
 	
 	public static void main(String[] args) {
 		/**
@@ -67,6 +92,7 @@ public class MainBinaryTree <K extends Comparable<K>> {
 		* PROCEDURE
 		* 1.Adding leaf to the binary tree
 		* 2.Printing the binary tree in inorder manner
+		* 3.Searching leaf in the binary tree
 		*/
 		
 	MainBinaryTree<Integer> tree =new MainBinaryTree<Integer>();
@@ -76,6 +102,8 @@ public class MainBinaryTree <K extends Comparable<K>> {
 	       tree.add(80);
 	       tree.add(15);
 	       tree.print();
+	       System.out.println();
+	       System.out.println(tree.search(63));
            
 	}
 
