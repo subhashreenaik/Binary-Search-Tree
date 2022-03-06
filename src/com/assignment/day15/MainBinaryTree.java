@@ -52,6 +52,21 @@ public class MainBinaryTree <K extends Comparable<K>> {
 	        return searchLeaf(root.left, x);
 	 }
      
+
+     /*This method is a recursive function to get the size of binary tree.we
+      * get the size of left subtree and right subtree recursively. 
+      * Size of a tree is the number of elements present in the tree.
+      */
+     
+     private int getSize(Node<K> root) {
+	        if (root == null)
+	            return 0;
+	        else {
+	            return 1 + this.getSize(root.left)
+	                    + this.getSize(root.right);
+	        }
+	    }
+     
      /*This method print the binary tree in inorder manner */
      
     void inorderPrint(Node<K> root)
@@ -76,10 +91,15 @@ public class MainBinaryTree <K extends Comparable<K>> {
  		this.inorderPrint(root); 
  	}
  	
- 	/*print method is calling the searchLeaf method */ 
+ 	/*search method is calling the searchLeaf method */ 
  	public boolean search(K key)
  	{
 		return this.searchLeaf(root, key);
+		
+	}
+ 	/*size method is calling the getSize method */ 
+ 	public int size() {
+		return getSize(root);
 		
 	}
 	
@@ -93,6 +113,7 @@ public class MainBinaryTree <K extends Comparable<K>> {
 		* 1.Adding leaf to the binary tree
 		* 2.Printing the binary tree in inorder manner
 		* 3.Searching leaf in the binary tree
+		* 4.Getting the size of the binary tree
 		*/
 		
 	MainBinaryTree<Integer> tree =new MainBinaryTree<Integer>();
@@ -104,7 +125,7 @@ public class MainBinaryTree <K extends Comparable<K>> {
 	       tree.print();
 	       System.out.println();
 	       System.out.println(tree.search(63));
-           
+           System.out.println("Size of the binary tree is  "+tree.size());
 	}
 
 }
