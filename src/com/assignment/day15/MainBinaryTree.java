@@ -1,9 +1,16 @@
 package com.assignment.day15;
+import java.util.Scanner;
+
 public class MainBinaryTree <K extends Comparable<K>> {
 	
      Node<K> root;
      
-     MainBinaryTree()
+     @Override
+	public String toString() {
+		return "MainBinaryTree [root=" + root + "]";
+	}
+
+	MainBinaryTree()
       {
     	 this.root=null;
       }
@@ -12,7 +19,7 @@ public class MainBinaryTree <K extends Comparable<K>> {
       * First it will check whether tree is empty or not.If it is empty,then it will return
       * new node.Otherwise it will recur down to tree.
       */
- 	
+ 	 
      public Node<K> insert(Node<K> root,K x) 
  	 {
  		if (root == null)
@@ -39,7 +46,7 @@ public class MainBinaryTree <K extends Comparable<K>> {
       */
      public boolean searchLeaf(Node<K> root, K x)
 	 {
-	     
+	  
 	     if (root==null) {
 	    	 return false;
 	         }
@@ -47,6 +54,7 @@ public class MainBinaryTree <K extends Comparable<K>> {
 	         return true;
 	         }
 	     int y = x.compareTo(root.key);
+	     System.out.println(y);
 	     if (y > 0)
 	        return searchLeaf(root.right, x);
 	        return searchLeaf(root.left, x);
@@ -116,16 +124,30 @@ public class MainBinaryTree <K extends Comparable<K>> {
 		* 4.Getting the size of the binary tree
 		*/
 		
-	MainBinaryTree<Integer> tree =new MainBinaryTree<Integer>();
-	       tree.add(56);
-	       tree.add(30);
-	       tree.add(70);
-	       tree.add(80);
-	       tree.add(15);
-	       tree.print();
-	       System.out.println();
-	       System.out.println(tree.search(63));
-           System.out.println("Size of the binary tree is  "+tree.size());
+	MainBinaryTree<String> tree =new MainBinaryTree<String>();
+	
+//	  tree.add(56);
+//	  tree.add(30);
+//	  tree.add(70);
+	  Scanner scan=new Scanner(System.in);
+	  String s="we are family";
+	  
+	  String[] words= s.split(" ");
+	  
+	  for(int i =0;i<words.length;i++) {
+		  tree.add(words[i]);
+		  tree.print();
+		 // System.out.println(words[i]);
+	  }
+	  
+	//  tree.print();
+	  System.out.println();
+	  System.out.println(tree.search("we"));
+	//  System.out.println(tree.getSize(null));
 	}
 
-}
+	}
+
+
+
+
